@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import OpenAI from 'openai'
+import { getIp, checkRateLimit } from '@/lib/rate-limit'
 
 function getClient() {
   return new OpenAI({
@@ -76,6 +77,14 @@ function phanMuc(xep_hang: number, chi_tieu: number | null): string {
 
 export async function POST(req: NextRequest) {
   try {
+    const rl = checkRateLimit(getIp(req))
+    if (!rl.ok) {
+      return NextResponse.json(
+        { error: `Quá nhiều yêu cầu. Thử lại sau ${rl.retryAfter} giây.` },
+        { status: 429, headers: { 'Retry-After': String(rl.retryAfter) } }
+      )
+    }
+
     const b: Body = await req.json()
 
     const topPhanTram = b.tong_so > 0

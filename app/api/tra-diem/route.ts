@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { supabase } from '@/lib/supabase'
+import { getIp, checkRateLimit } from '@/lib/rate-limit'
 
 // Đếm số người có điểm cao hơn (rank = count + 1)
 async function demCaoHon(ma_tinh: string, cot: string, diem: number | null) {
@@ -13,6 +14,14 @@ async function demCaoHon(ma_tinh: string, cot: string, diem: number | null) {
 }
 
 export async function GET(req: NextRequest) {
+  const rl = checkRateLimit(getIp(req))
+  if (!rl.ok) {
+    return NextResponse.json(
+      { error: `Bạn tra cứu quá nhanh. Vui lòng thử lại sau ${rl.retryAfter} giây.` },
+      { status: 429, headers: { 'Retry-After': String(rl.retryAfter) } }
+    )
+  }
+
   const sbd = req.nextUrl.searchParams.get('sbd')?.trim()
   const ma_tinh = req.nextUrl.searchParams.get('ma_tinh')?.trim()
 
