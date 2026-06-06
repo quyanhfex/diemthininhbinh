@@ -36,6 +36,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/",
   },
+  verification: {
+    google: "cG47O0YRM9_hUVKEglMNXw_BSa8PHkI33jjBRIv7I0E",
+  },
 };
 
 // Structured data (JSON-LD) giúp Google hiểu nội dung + hiện rich snippet
