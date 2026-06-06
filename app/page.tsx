@@ -584,9 +584,22 @@ export default function Home() {
         )}
       </div>
 
-      <p className="text-white/70 text-xs mt-10 text-center">
-        Dữ liệu từ kỳ thi tuyển sinh vào lớp 10 tỉnh Ninh Bình năm 2026
-      </p>
+      <div className="mt-10 flex flex-col items-center gap-3">
+        <a
+          href="https://www.tiktok.com/@ga_ran_math0"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 bg-black/85 hover:bg-black text-white font-semibold text-sm px-5 py-2.5 rounded-full shadow-lg transition-all active:scale-95"
+        >
+          <svg viewBox="0 0 24 24" className="w-4 h-4" fill="currentColor" aria-hidden="true">
+            <path d="M16.6 5.82a4.28 4.28 0 0 1-1.06-2.82h-3.04v12.4a2.45 2.45 0 0 1-2.45 2.45 2.45 2.45 0 0 1-2.45-2.45 2.45 2.45 0 0 1 3.2-2.33V7.96a5.52 5.52 0 0 0-.75-.05 5.5 5.5 0 1 0 5.5 5.5V8.2a7.3 7.3 0 0 0 4.25 1.36V6.52a4.28 4.28 0 0 1-3.2-.7z"/>
+          </svg>
+          Theo dõi @ga_ran_math0
+        </a>
+        <p className="text-white/70 text-xs text-center">
+          Dữ liệu từ kỳ thi tuyển sinh vào lớp 10 tỉnh Ninh Bình năm 2026
+        </p>
+      </div>
     </div>
   )
 }
