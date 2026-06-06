@@ -1,10 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server'
 import OpenAI from 'openai'
 
-const openai = new OpenAI({
-  baseURL: 'https://api.deepinfra.com/v1/openai',
-  apiKey: process.env.DEEPINFRA_API_KEY,
-})
+function getClient() {
+  return new OpenAI({
+    baseURL: 'https://api.deepinfra.com/v1/openai',
+    apiKey: process.env.DEEPINFRA_API_KEY,
+  })
+}
 
 const MODEL = 'google/gemma-4-26B-A4B-it'
 
@@ -104,7 +106,7 @@ export async function POST(req: NextRequest) {
         : '',
     ].filter(Boolean).join('\n')
 
-    const completion = await openai.chat.completions.create({
+    const completion = await getClient().chat.completions.create({
       model: MODEL,
       max_tokens: 400,
       temperature: 0.9,
