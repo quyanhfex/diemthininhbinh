@@ -418,7 +418,7 @@ export default function Home() {
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src="/avt.png" alt="avatar" className="w-full h-full object-cover" />
             </div>
-            <p className="text-gray-700 font-bold text-lg mb-1">Đang chấm bài cho bạn...</p>
+            <p className="text-gray-700 font-bold text-lg mb-1">Đang xếp hạng...</p>
             <p className="text-gray-400 text-sm mb-6">Thầy mèo đang xem điểm và viết lời nhắn 🐱</p>
 
             {/* Thanh tiến độ */}
